@@ -25,7 +25,7 @@ boolean lines = false;
 float sWeight = 1; //strokeWeight of the dots
 int numPoint = 100000; //number of points generated
 float c = 3.6; //c-value: see line 97
-int randMode = 0; //type of random selection- outlined in chooseRandom method
+int randMode = 0; //type of random selection- outlined in chooseRandom method on line 103
 boolean col = true; //whether color is activated or not
 boolean pretty = false; //gets rid of shape vertices if true
 boolean randSpherical = false; //whether the shape made by randomShaper method is spherical in nature
@@ -101,9 +101,12 @@ PVector func(PVector p1, PVector p2) {
 
 //chooses a random number for chaos game selection
 void chooseRandom() {
+  //normal random selection
   if (randMode == 0) {
     rand = (int)(Math.random()*selected.length);
-  } else if (randMode == 1) {
+  }
+  //selects any random point except the last one selected
+  else if (randMode == 1) {
     last = rand;
     while (rand == last) rand = (int)(Math.random()*selected.length);
   }
